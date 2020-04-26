@@ -29,6 +29,9 @@ intents:
   - ask_restaurant
   - ask_whoami
 entities:
+  - Numeral
+  - CreditCardNumber
+  - number
   - credit_card_value
   - email
   - id_card
@@ -83,7 +86,7 @@ responses:
   utter_ask_email:
   - text: 请输入你的可用邮箱
   utter_ask_id_card:
-  - text: 请输入你的有效证件号
+  - text: 请输入你的有效证件号(例如:4111-1111-1111-1111)
   utter_evaluate:
   - text: 恭喜您办卡成功，请给这次服务评价?
     buttons:

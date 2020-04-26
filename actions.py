@@ -21,10 +21,12 @@ class CreateCreditCardFrom(FormAction):
     def required_slots(tracker):
 
     # 插槽名字和询问插槽的意图名字一致  utter_ask_name(动作) --->name(插槽)
-        return ["credit_card_value",
+        return [
                 "name",
                 "email",
                 "id_card"]
+
+
     def slot_mappings(self):
         # type: () -> Dict[Text: Union[Dict, List[Dict]]]
         """A dictionary to map required slots to
@@ -42,25 +44,28 @@ class CreateCreditCardFrom(FormAction):
                      self.from_text(intent="enter_data"),
                      ],
             "id_card": [
-                self.from_entity(entity="id_card"),
+                self.from_entity(entity="number"),
                 self.from_text(intent="enter_data"),
-            ],
-            "credit_card_value": [
-                self.from_entity(entity="credit_card_value"),
-                self.from_text(intent="enter_data"),
-            ],
+            ]
         }
-# 验证插槽，如果该插槽有值则直接跳过此动作
-    def validate_id_card(self, value, dispatcher, tracker, domain):
-        """Check to see if an id_card entity was actually picked up by duckling."""
-
-        if any(tracker.get_latest_entity_values("id_card")):
-            # entity was picked up, validate slot
-            return {"id_card": value}
-        else:
-            # no entity was picked up, we want to ask again
-            dispatcher.utter_template("utter_no_id_card", tracker)
-            return {"id_card": None}
+# 验证插槽，如果该插槽有值则直接跳过此故事线
+#     def validate_slots(
+#         self,
+#         slot_dict: Dict[Text, Any],
+#         dispatcher: "CollectingDispatcher",
+#         tracker: "Tracker",
+#         domain: Dict[Text, Any],
+#     ) -> List[EventType]:
+#     def validate_id_card(self, value, dispatcher, tracker, domain):
+#
+#         """Check to see if an id_card entity was actually picked up by duckling."""
+#         if any(tracker.get_slot("id_card")):
+#             # entity was picked up, validate slot
+#             return {"id_card": value}
+#         else:
+#             # no entity was picked up, we want to ask again
+#             dispatcher.utter_template("utter_no_id_card", tracker)
+#             return {"id_card": None}
 
     def submit(
         self,
@@ -95,4 +100,3 @@ class CreateCreditCardFrom(FormAction):
             )
             dispatcher.utter_template("utter_store_failed", tracker)
             return []
-

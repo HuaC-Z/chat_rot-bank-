@@ -38,7 +38,6 @@ run-socketio:
 	rasa run --debug --endpoints endpoints.yml  --credentials credentials.yml --enable-api --cors '*'
 
 run-x:
-    docker run -p 8000:8000 rasa/duckling
 	make run-actions&
 	rasa x --endpoints endpoints.yml
 	--user
