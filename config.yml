@@ -1,0 +1,23 @@
+language: zh
+pipeline:
+- name: JiebaTokenizer
+- name: CRFEntityExtractor
+- name: CountVectorsFeaturizer
+  OOV_token: oov
+  token_pattern: (?u)\b\w+\b
+- name: DIETClassifier
+  epochs: 50
+- name: DucklingHTTPExtractor
+  url: http://localhost:8000
+  dimensions:
+  - email
+  - number
+- name: EntitySynonymMapper
+policies:
+- epochs: 50
+  max_history: 6
+  name: TEDPolicy
+- max_history: 6
+  name: AugmentedMemoizationPolicy
+- name: FormPolicy
+- name: MappingPolicy

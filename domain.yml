@@ -1,0 +1,234 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+  - enter_data:
+      use_entities: []
+  - feedback
+  - ask_isbot
+  - ask_whatisrasa
+  - ask_howold
+  - ask_languagesbot
+  - ask_howbuilt
+  - ask_whoisit
+  - ask_whatismyname
+  - transfer_money
+  - show_accounts
+  - human_handoff
+  - apply_for_credit_card
+  - ask_apply_for_credit_card
+  - ask_arrears
+  - deposit_money
+  - ask_weather
+  - withdraw_money
+  - ask_builder
+  - ask_whatspossible
+  - ask_howdoing
+  - ask_wherefrom
+  - ask_time
+  - ask_restaurant
+  - ask_whoami
+entities:
+  - credit_card_value
+  - email
+  - id_card
+  - evaluate_value
+  - name
+slots:
+    credit_card_value:
+      type: categorical
+      values:
+      - 黑卡
+      - 金卡
+      - 银卡
+    email:
+      type: unfeaturized
+    id_card:
+      type: text
+    evaluate_value:
+      type: categorical
+      values:
+      - 满意
+      - 不满意
+    name:
+      type: text
+responses:
+  utter_confirm_store:
+  - text: 存储用户信息成功
+  utter_store_failed:
+  - text: 存储用户信息失败
+  utter_no_name:
+  - text: 请重新输入您的姓名
+  utter_no_id_card:
+  - text: 请重新输入您的身份证
+  utter_no_email:
+  - text: 邮箱格式不正确
+  utter_confirm_salesrequest:
+  - text: 恭喜你，办卡成功
+  utter_salesrequest_failed:
+  - text: 办卡失败
+  utter_nomanyi:
+  - text: 我会继续努力下次一定让您满意。(*￣︶￣)
+  utter_apply_for_credit_card:
+  - text: 请选择你要办卡的类型?
+    buttons:
+    - title: 黑卡
+      payload: /feedback{"credit_card_value":"黑卡"}
+    - title: 金卡
+      payload: /feedback{"credit_card_value":"金卡"}
+    - title: 银卡
+      payload: /feedback{"credit_card_value":"银卡"}
+  utter_ask_name:
+  - text: 请填写你的姓名
+  utter_ask_email:
+  - text: 请输入你的可用邮箱
+  utter_ask_id_card:
+  - text: 请输入你的有效证件号
+  utter_evaluate:
+  - text: 恭喜您办卡成功，请给这次服务评价?
+    buttons:
+    - title: 满意
+      payload: /feedback{"evaluate_value":"满意"}
+    - title: 不满意
+      payload: /feedback{"evaluate_value":"不满意"}
+  utter_heika:
+  - text: 尊敬的黑卡用户,欢迎您进入四组银行。
+  utter_jinka:
+  - text: 尊敬的金卡用户,欢迎您进入四组银行。
+  utter_yinka:
+  - text: 尊敬的银卡用户,欢迎您进入四组银行。
+  utter_out_of_scope:
+  - text: 对不起，我不能处理这个请求。
+  - text: 对不起，我帮不了你。
+  - text: 即使是小路机器人也不是完全完美的-看起来我无法应付那个请求。
+  utter_noworries:
+  - text: 不用担心！
+  - text: 不客气！
+  - text: 我很乐意帮忙。
+  utter_bye:
+  - text: 再见！
+  - text: 拜拜！
+  - text: 回见！
+  - text: 再见，很高兴和你聊天！
+  utter_default:
+  - text: 对不起，我没收到。你能换个说法吗？
+  - text: 我不明白，你能换个说法吗？
+  - text: 对不起，我不明白你的意思。你能重新表述一下你刚才说的？
+  - text: 恐怕我听不懂你刚才说的话。你能换个说法吗？
+  - text: 我不太明白，你能改一下你的意思吗？
+  - text: 你能换个说法吗？我不明白，对不起。
+  utter_thumbsup:
+  - text: 好
+  - text: 好的。
+  - text: 明白了。
+  utter_great:
+  - text: 您好，欢迎来到四组银行。请问您需要办理什么业务？
+  utter_awesome:
+  - text: 太棒了，谢谢你
+  - text: 谢谢
+  - text: 酷，谢谢你
+  utter_can_do:
+  - text: 小菜一碟
+  - text: 可以
+  - text: 我当然可以
+  utter_no_speak:
+  - text: 对不起，我们不能讨论这个话题
+  utter_ask_weather:
+  - text: 对我来说每一天都是晴天！
+  - text: 晴空万里！
+  utter_ask_howdoing:
+  - text: 很好！
+  - text: 最近天天吃钱，胖了好多！
+  - text: 最近一直在没完没了的工作！
+  utter_ask_whatspossible:
+  - text: 您可以在这里办理银行业务，也可以与我聊天。
+  utter_explain_business_email:
+  - text: 我们需要您的商业电子邮件与您联系后。否则，我们不能帮你安排小姐姐
+  utter_explain_company:
+  - text: 只是为了完整
+  utter_explain_job_function:
+  - text: 你的工作职能有助于我们了解如何与你进行最好的沟通。
+  utter_explain_use_case:
+  - text: 为了给你最好的帮助，我们需要知道你想做什么。
+  utter_explain_person_name:
+  - text: 为了以后能与您联系，我们想知道您的名字。
+  utter_no_community_event:
+  - text: 抱歉，我们目前没有任何计划的社区活动
+  utter_not_sure:
+  - text: 嗯，不知道你是什么意思。。。
+  utter_getstarted_new:
+  - text: 我知道你是新来的，我先问你一个简单的问题\\开始时间
+  utter_ask_restaurant:
+  - text: 对不起，我不能向你推荐餐馆，因为我通常在家做饭。
+  utter_ask_time:
+  - text: 这是一年中最美好的时光！
+  utter_ask_wherefrom:
+  - text: 我出生在柏林，但我认为自己是世界公民。
+  - text: 我出生在地球上最酷的城市。
+  utter_ask_whoami:
+  - text: 我希望你做你自己。
+  utter_canthelp:
+  - text: 对不起，我帮不了你。如果您对我有一般问题，请前往 https://forum.rasa.com/, otherwise contact us at hi@rasa.com
+      查看所有
+  utter_cant_answer_tech_question:
+  - text: 我不能回答。
+  utter_anything_else:
+  - text: 还有什么我能帮你的吗？
+  utter_human_handoff:
+  - text: 抱歉，没有此项服务
+  utter_ask_builder:
+  - text: 陈政华，马登州，孙少博，胡林冲
+  utter_isbot:
+  - text: 我不是，我是陈政华
+  utter_languagesbot:
+  - text: 中文
+  utter_howbuilt:
+  - text: 我是通过一些算法组成的
+  utter_whatismyname:
+  - text: 小璐
+
+actions:
+  - utter_out_of_scope
+  - utter_noworries
+  - utter_default
+  - utter_thumbsup
+  - utter_great
+  - utter_awesome
+  - utter_can_do
+  - utter_no_speak
+  - utter_ask_weather
+  - utter_ask_howdoing
+  - utter_bye
+  - utter_getstarted_new
+  - utter_not_sure
+  - utter_no_community_event
+  - utter_explain_job_function
+  - utter_explain_use_case
+  - utter_explain_person_name
+  - utter_explain_company
+  - utter_explain_business_email
+  - utter_ask_restaurant
+  - utter_ask_time
+  - utter_ask_wherefrom
+  - tter_canthelp
+  - utter_ask_whoami
+  - utter_cant_answer_tech_question
+  - utter_anything_else
+  - utter_human_handoff
+  - utter_ask_builder
+  - utter_isbot
+  - utter_languagesbot
+  - utter_howbuilt
+  - utter_whatismyname
+  - utter_no_email
+  - utter_confirm_salesrequest
+  - utter_salesrequest_failed
+  - utter_apply_for_credit_card
+  - utter_ask_name
+  - utter_ask_id_card
+  - utter_evaluate
+  - utter_heika
+  - utter_jinka
+  - utter_yinka
+forms:
+  - create_credit_card_form
