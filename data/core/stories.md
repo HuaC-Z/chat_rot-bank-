@@ -28,15 +28,9 @@
 ## howbuilt
 * ask_howbuilt
     - utter_howbuilt
-## whatismyname
-* ask_whatismyname
-    - utter_whatismyname
 ## whoisit
 * ask_whoisit
     - utter_not_sure
-## whoami
-* ask_whoami
-    - utter_cant_answer_tech_question
 ## restaurant
 * ask_restaurant
     - utter_ask_restaurant
@@ -47,6 +41,9 @@
 * ask_wherefrom
     - utter_ask_wherefrom
     
+## greet
+* greet
+    - utter_greet
     
     
     
@@ -58,11 +55,7 @@
     
     
     
-    
-    
-    
-    
-    
+
 ## Building card
 * apply_for_credit_card
     - utter_apply_for_credit_card
@@ -90,10 +83,11 @@
 * feedback{"evaluate_value":"满意"}
     - slot{"evaluate_value":"满意"}
     - utter_awesome
+    - action_restart
 * feedback{"evaluate_value":"不满意"}
     - slot{"evaluate_value":"不满意"}
     - utter_nomanyi
-
+    - action_restart
 
     
 

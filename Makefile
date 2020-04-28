@@ -26,6 +26,7 @@ train-memo:
 	rasa train core --domain domain.yml --stories data/core --config augmentedmemo-only.yml --out models/dialogue --augmentation 0 --quiet
 
 run-cmdline:
+    docker run -p 8000:8000 rasa/duckling
 	make run-actions&
 	rasa shell --debug --endpoints endpoints.yml
 

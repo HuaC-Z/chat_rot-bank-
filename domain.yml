@@ -4,6 +4,7 @@ session_config:
 intents:
   - enter_data:
       use_entities: []
+  - greet
   - feedback
   - ask_isbot
   - ask_whatisrasa
@@ -11,7 +12,6 @@ intents:
   - ask_languagesbot
   - ask_howbuilt
   - ask_whoisit
-  - ask_whatismyname
   - transfer_money
   - show_accounts
   - human_handoff
@@ -27,8 +27,9 @@ intents:
   - ask_wherefrom
   - ask_time
   - ask_restaurant
-  - ask_whoami
 entities:
+  - credit_card
+  - balance
   - Numeral
   - CreditCardNumber
   - number
@@ -38,6 +39,14 @@ entities:
   - evaluate_value
   - name
 slots:
+    password_confirm:
+      type: unfeaturized
+    credit_card:
+      type: unfeaturized
+    password:
+      type: unfeaturized
+    balance:
+      type: unfeaturized
     credit_card_value:
       type: categorical
       values:
@@ -47,15 +56,17 @@ slots:
     email:
       type: unfeaturized
     id_card:
-      type: text
+      type: unfeaturized
     evaluate_value:
       type: categorical
       values:
       - 满意
       - 不满意
     name:
-      type: text
+      type: unfeaturized
 responses:
+  utter_ask_password_confirm:
+  - text: 请你输入密码
   utter_confirm_store:
   - text: 存储用户信息成功
   utter_store_failed:
@@ -64,6 +75,8 @@ responses:
   - text: 请重新输入您的姓名
   utter_no_id_card:
   - text: 请重新输入您的身份证
+  utter_no_password:
+  - text: 密码位数不对
   utter_no_email:
   - text: 邮箱格式不正确
   utter_confirm_salesrequest:
@@ -84,9 +97,11 @@ responses:
   utter_ask_name:
   - text: 请填写你的姓名
   utter_ask_email:
-  - text: 请输入你的可用邮箱
+  - text: 请输入你的可用邮箱,目前我们银行只支持'qq.com', '163.com', 'huohu.com', 'xinlang.com', '126.com'
+  utter_ask_password:
+  - text: 请确认密码
   utter_ask_id_card:
-  - text: 请输入你的有效证件号(例如:4111-1111-1111-1111)
+  - text: 请输入你的有效证件号
   utter_evaluate:
   - text: 恭喜您办卡成功，请给这次服务评价?
     buttons:
@@ -158,7 +173,7 @@ responses:
   utter_no_community_event:
   - text: 抱歉，我们目前没有任何计划的社区活动
   utter_not_sure:
-  - text: 嗯，不知道你是什么意思。。。
+  - text: 小璐
   utter_getstarted_new:
   - text: 我知道你是新来的，我先问你一个简单的问题\\开始时间
   utter_ask_restaurant:
@@ -168,8 +183,6 @@ responses:
   utter_ask_wherefrom:
   - text: 我出生在柏林，但我认为自己是世界公民。
   - text: 我出生在地球上最酷的城市。
-  utter_ask_whoami:
-  - text: 我希望你做你自己。
   utter_canthelp:
   - text: 对不起，我帮不了你。如果您对我有一般问题，请前往 https://forum.rasa.com/, otherwise contact us at hi@rasa.com
       查看所有
@@ -187,9 +200,8 @@ responses:
   - text: 中文
   utter_howbuilt:
   - text: 我是通过一些算法组成的
-  utter_whatismyname:
-  - text: 小璐
-
+  utter_greet:
+  - text: 你好，请问有什么可以帮您的
 actions:
   - utter_out_of_scope
   - utter_noworries
@@ -214,7 +226,6 @@ actions:
   - utter_ask_time
   - utter_ask_wherefrom
   - tter_canthelp
-  - utter_ask_whoami
   - utter_cant_answer_tech_question
   - utter_anything_else
   - utter_human_handoff
@@ -222,7 +233,6 @@ actions:
   - utter_isbot
   - utter_languagesbot
   - utter_howbuilt
-  - utter_whatismyname
   - utter_no_email
   - utter_confirm_salesrequest
   - utter_salesrequest_failed
@@ -233,5 +243,8 @@ actions:
   - utter_heika
   - utter_jinka
   - utter_yinka
+  - reset_slots
+  - utter_no_password
+  - utter_ask_password_confirm
 forms:
   - create_credit_card_form
