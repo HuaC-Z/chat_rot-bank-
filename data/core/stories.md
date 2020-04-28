@@ -1,59 +1,22 @@
-## human
-* human_handoff
-    - utter_human_handoff
 ## builder
 * ask_builder
     - utter_ask_builder
-## weather
-* ask_weather
-    - utter_ask_weather
-## howdoing    
-* ask_howdoing
-    - utter_ask_howdoing
-## whatspossible  
-* ask_whatspossible
-    - utter_ask_whatspossible
-## isbot
-* ask_isbot
-    - utter_isbot
-## whatisrasa
-* ask_whatisrasa
-    - utter_great
-## howold
-* ask_howold
-    - utter_out_of_scope
-## languagesbot
-* ask_languagesbot
-    - utter_languagesbot
-## howbuilt
-* ask_howbuilt
-    - utter_howbuilt
-## whoisit
-* ask_whoisit
-    - utter_not_sure
-## restaurant
-* ask_restaurant
-    - utter_ask_restaurant
-## time
-* ask_time
-    - utter_ask_time
-## wherefrom
-* ask_wherefrom
-    - utter_ask_wherefrom
-    
 ## greet
 * greet
     - utter_greet
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+## outofscrop
+* out_of_scope
+    - utter_out_of_scope
+## bye
+* bye
+    - utter_bye     
+
+## withdraw_money
+* withdraw_money
+    - quqian_form
+    - form{"name": "quqian_form"}
+    - form{"name": null}
+    - action_restart
     
 
 ## Building card
@@ -90,4 +53,17 @@
     - action_restart
 
     
+## check
+* show_accounts
+    - check_balance_form
+    - form{"name": "check_balance_form"}
+    - form{"name": null}
+    - action_restart
 
+## Deposit money
+* deposit_money
+    - deposit_money_form
+    - form{"name": "deposit_money_form"}
+    - form{"name": null}
+    - action_restart 
+    
