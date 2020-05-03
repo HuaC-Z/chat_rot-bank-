@@ -26,9 +26,11 @@ entities:
   - evaluate_value
   - name
 slots:
-    password_confirm:
+    to_bank_card:
       type: unfeaturized
-    credit_card:
+    bank_card:
+      type: unfeaturized
+    password_confirm:
       type: unfeaturized
     password:
       type: unfeaturized
@@ -53,29 +55,25 @@ slots:
       type: unfeaturized
     save_money:
       type: unfeaturized
-    money_count:
+    withdraw_money:
+      type: unfeaturized
+    transfer_money:
       type: unfeaturized
 responses:
-  utter_answer:
-  - text: {content}
+  utter_ask_save_money:
+  - text: 请输入存钱金额
+  utter_ask_withdraw_money:
+  - text: 请输入您需要存款的金额
+  utter_ask_transfer_money:
+  - text: 请输入转账的金额
+  utter_ask_to_bank_card:
+  - text: 请输入对方的卡号
+  utter_ask_bank_card:
+  - text: 请输入您的银行卡号
   utter_ask_password_confirm:
   - text: 请确认密码
-  utter_confirm_store:
-  - text: 存储用户信息成功
-  utter_store_failed:
-  - text: 存储用户信息失败
-  utter_no_name:
-  - text: 该用户姓名已存在
-  utter_no_id_card:
-  - text: 身份证位数不对,请重新输入
-  utter_no_password:
-  - text: 密码位数不对
   utter_no_email:
   - text: 邮箱格式不正确
-  utter_confirm_salesrequest:
-  - text: 恭喜你，办卡成功
-  utter_salesrequest_failed:
-  - text: 办卡失败
   utter_nomanyi:
   - text: 我会继续努力下次一定让您满意。(*￣︶￣)
   utter_apply_for_credit_card:
@@ -87,6 +85,8 @@ responses:
       payload: /feedback{"credit_card_value":"金卡"}
     - title: 银卡
       payload: /feedback{"credit_card_value":"银卡"}
+    - title: 退出
+      payload: /feedback{"credit_card_value":"退出"}
   utter_ask_name:
   - text: 请填写你的姓名
   utter_ask_email:
@@ -135,14 +135,6 @@ responses:
   - text: 您好，小璐很高兴为您服务
   utter_save:
   - text: 存钱成功
-  utter_ask_save_money:
-  - text: 请输入存钱金额
-  utter_ask_moneycount:
-  - text: 请输入你要取钱的金额
-  utter_qukuan_acc:
-  - text: 取款成功
-  utter_qukuan_false:
-  - text: 取款失败
 actions:
   - utter_greet
   - utter_out_of_scope
@@ -157,20 +149,20 @@ actions:
   - utter_heika
   - utter_jinka
   - utter_yinka
-  - utter_no_password
   - utter_ask_password_confirm
   - utter_balace_info
   - utter_no_person
   - utter_nomanyi
   - utter_save
-  - utter_ask_save_money
-  - utter_ask_moneycount
-  - utter_qukuan_acc
-  - utter_qukuan_false
   - action_default_fallback
-  - utter_answer
+  - utter_ask_save_money
+  - utter_ask_withdraw_money
+  - utter_ask_transfer_money
+  - utter_ask_to_bank_card
+  - utter_ask_bank_card
 forms:
   - create_credit_card_form
   - check_balance_form
   - deposit_money_form
-  - quqian_form
+  - withdraw_money_form
+  - transfer_money_form

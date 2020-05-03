@@ -13,8 +13,8 @@
 
 ## withdraw_money
 * withdraw_money
-    - quqian_form
-    - form{"name": "quqian_form"}
+    - withdraw_money_form
+    - form{"name": "withdraw_money_form"}
     - form{"name": null}
     - action_restart
     
@@ -43,6 +43,8 @@
     - form{"name": "create_credit_card_form"}
     - form{"name": null}
     - utter_evaluate
+* feedback{"credit_card_value":"退出"}   
+    - action_restart
 * feedback{"evaluate_value":"满意"}
     - slot{"evaluate_value":"满意"}
     - utter_awesome
@@ -51,9 +53,8 @@
     - slot{"evaluate_value":"不满意"}
     - utter_nomanyi
     - action_restart
-
     
-## check
+## check blance
 * show_accounts
     - check_balance_form
     - form{"name": "check_balance_form"}
@@ -66,4 +67,10 @@
     - form{"name": "deposit_money_form"}
     - form{"name": null}
     - action_restart 
-    
+  
+## transfer money
+* transfer_money
+    - transfer_money_form
+    - form{"name": "transfer_money_form"}
+    - form{"name": null}
+    - action_restart
